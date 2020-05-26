@@ -49,13 +49,13 @@
             @{ 
                 String shortDesc = item.description.Substring(0, 40) + "...";
             }
-            @shortDesc
+            @Html.Raw(shortDesc)
         </td>
         <td>
-            <img src="@Html.DisplayFor(modelItem => item.company_logo)" height="50" />
+            <img src="@Html.DisplayFor(modelItem => item.company_logo)" class="img-thumbnail" alt="Responsive image" width="70"/>
         </td>
         <td>
-            @Html.ActionLink("Details", "Details", new { id=item.id })
+            @Html.ActionLink("JobDetails", "JobDetails", new { id = item.id })
         </td>
     </tr>
 }
