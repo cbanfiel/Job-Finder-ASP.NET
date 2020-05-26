@@ -69,5 +69,20 @@ namespace WepApp.Controllers
 
             return View(resultsModel);
         }
+
+
+        public async Task<ActionResult> JobDetails(string id) {
+
+            if(!id.IsNullOrWhiteSpace())
+            {
+                String url = $"https://jobs.github.com/positions/{id}.json";
+                String results = await RequestsModel.GetRequest(url);
+                ResultModel resultModel = JsonConvert.DeserializeObject<ResultModel>(results);
+
+                return View(resultModel);
+            }
+
+            return RedirectToAction("Search");
+        }
     }
 }
